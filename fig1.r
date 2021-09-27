@@ -11,5 +11,5 @@ df  <- df[, !(names(df) %in% drops)]
 df1 <- df %>%
 	gather("Legislatura","Diputados", -Partido)
 
-fig  <- ggplot(df1, aes( Diputados, Partido, fill=Legislatura)) + geom_col(position = "dodge2") + coord_flip()
+fig  <- ggplot(df1, aes( Partido, Diputados, fill=Legislatura)) + geom_col(position = "dodge2")
 fig + theme_classic() + ggtitle("Total de diputados por partido en cada Legislatura")
