@@ -8,6 +8,6 @@ df1<- df %>%
 
 viz3<- ggplot(df1, aes(x=reorder(Partido, -RepresentacionProporcional), RepresentacionProporcional, fill = Legislatura)) + 
   geom_col(position="dodge2") 
-viz3 + theme_bw() + labs(title="Distribución de la Representación Proporcional por partidos", subtitle ="Legislaturas LXIII,LXIV y LXV",
+viz3 + theme_classic() + labs(title="Distribución de la Representación Proporcional por partidos", subtitle ="Legislaturas LXIII,LXIV y LXV",
                                 caption = "Fuente: SIL") + theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))+
   xlab("Partidos") + ylab("Cantidad de diputados")
