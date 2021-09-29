@@ -12,7 +12,5 @@ df1 <- df %>%
 	gather("Legislatura","Diputados", -Partido)
 
 fig  <- ggplot(df1, aes( x = reorder(Partido, -Diputados), Diputados, fill=Legislatura)) + geom_col(position = "dodge2")
-fig + theme_classic() + ggtitle("Total de diputados por partido en cada Legislatura") + 
+fig + theme_bw() + ggtitle("Total de diputados por partido en cada Legislatura") +
   xlab("Partidos") + ylab("Cantidad de diputados") + theme(plot.title = element_text(hjust = 0.5))
-
-                                                           

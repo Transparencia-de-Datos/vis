@@ -5,4 +5,4 @@ diputadostotal <- read.csv("total1.csv",header = TRUE, sep = ",", fileEncoding="
 viz1<- ggplot(diputadostotal, aes(Diputados, Partido, fill= Legislatura)) +
   geom_col(position = "dodge2") + coord_flip()
 
-viz1 + theme_classic() + ggtitle("Total diputados por partido en cada Legislatura")
+viz1 + theme_bw() + ggtitle("Total diputados por partido en cada Legislatura")
