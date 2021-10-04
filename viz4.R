@@ -11,8 +11,9 @@ df1 <- df %>% select(Partido, Cambio.Eleccion.2018, Cambio.Eleccion.2021) %>%
   
 viz4<-ggplot(df1, aes(x= Partido,y=CambioPorcentual)) + 
   geom_bar(stat = "identity",  aes(fill=pos))
-viz4 + theme_bw() +  coord_flip() + facet_grid(~Periodo) + 
+viz4 + theme_classic() +  coord_flip() + facet_grid(~Periodo) + 
   labs(title ="Cambio porcentual en cantidad de diputados totales", subtitle="Elecciones 2018 y 2021", caption = "Fuente: SIL")+
-  theme(legend.position = "top")
+  theme(legend.position = "top") + geom_text(aes(label = CambioPorcentual),  position = position_dodge(width = 1), vjust = -.4)
+
 
 

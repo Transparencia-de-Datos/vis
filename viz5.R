@@ -8,6 +8,7 @@ df1 <- df %>%
 
 viz5 <- ggplot(df1, aes(Elecciones, Cantidad, fill = Partido)) + 
   geom_col(position = "dodge2")
-viz5+ theme_bw() + labs(title ="Cambio de gubernatura por partido", subtitle="Elecciones 2018 y 2021", caption = "Fuente: SIL")+
-  theme(legend.position = "top")
+viz5+ theme_classic() + labs(title ="Cambio de gubernatura por partido", subtitle="Elecciones 2018 y 2021", caption = "Fuente: SIL")+
+  theme(legend.position = "top")+ geom_text(aes(label = Cantidad),  position = position_dodge(width = 1), vjust = -.4)
+
 
