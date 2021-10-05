@@ -6,14 +6,14 @@ library(tidyverse)
 df <- read.csv("datos/total.csv", na.strings = "")
 df1 <- df %>% select(Partido, Cambio.Eleccion.2018, Cambio.Eleccion.2021) %>%
   gather("Periodo", "CambioPorcentual", 2:3) %>%
-  mutate(pos = CambioPorcentual >= 0) %>%
-  arrange(CambioPorcentual)
+  mutate(Cambio = as.numeric(sub("%","",CambioPorcentual))) %>%
+  arrange(Cambio)
   
-viz4<-ggplot(df1, aes(x= Partido,y=CambioPorcentual)) + 
-  geom_bar(stat = "identity",  aes(fill=pos))
+viz4<-ggplot(df1, aes(x= Partido,y=Cambio)) + ylim(-80, 410) +
+  geom_bar(stat = 'identity',  aes(fill= Partido))
 viz4 + theme_classic() +  coord_flip() + facet_grid(~Periodo) + 
-  labs(title ="Cambio porcentual en cantidad de diputados totales", subtitle="Elecciones 2018 y 2021", caption = "Fuente: SIL")+
-  theme(legend.position = "top") + geom_text(aes(label = CambioPorcentual),  position = position_dodge(width = 1), vjust = -.4)
+  labs(title ="Cambio porcentual en cantidad de diputados totales", subtitle="Elecciones 2018 y 2021", caption = "Fuente: Currícula Cámara de Diputados")+
+   geom_text(aes(label = Cambio))
 
 
 
