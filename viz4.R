@@ -14,6 +14,6 @@ viz4<-ggplot(df1, aes(x= Partido,y=Cambio)) + ylim(-120, 410) +
   geom_bar(stat = 'identity',  aes(fill= Partido))
 viz4 + theme_classic() +  coord_flip() + facet_grid(~Periodo) + 
   labs(title ="Cambio porcentual en cantidad de diputados totales", subtitle="Elecciones 2018 y 2021", caption = "Fuente: Currícula Cámara de Diputados")+
-   geom_text(aes(label = Cambio)) + theme(legend.position = "top")
+   geom_text(aes(label = Cambio)) + theme(legend.position = "top") + annotation_custom(g_pic, xmin=5, xmax=Inf, ymin=5, ymax=Inf)
 
 
