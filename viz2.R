@@ -13,7 +13,8 @@ df  <- df[, !(names(df) %in% drops)]
 
 
 df1<- df %>%
-  gather("Legislatura","MayoriaRelativa",-Partido)
+  gather("Legislatura","MayoriaRelativa",-Partido) %>%
+  filter(MayoriaRelativa != 0)
 
 img <- png::readPNG("img/logo.png")
 g_pic  <- rasterGrob(img, interpolate = TRUE)

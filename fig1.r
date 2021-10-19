@@ -11,7 +11,8 @@ drops  <- c("Cambio.Eleccion.2018", "Cambio.Eleccion.2021")
 df  <- df[, !(names(df) %in% drops)]
 
 df1 <- df %>%
-	gather("Legislatura","Diputados", -Partido)
+	gather("Legislatura","Diputados", -Partido) %>%
+  filter(Diputados != 0)
 
 img <- png::readPNG("img/logo.png")
 g_pic  <- rasterGrob(img, interpolate = TRUE)

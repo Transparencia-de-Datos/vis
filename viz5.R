@@ -9,7 +9,8 @@ g_pic  <- rasterGrob(img, interpolate = TRUE)
 
 df <- read.csv("datos/gubernaturas.csv", na.strings = "")
 df1 <- df %>%
-  gather("Elecciones", "Cantidad", 2:3)
+  gather("Elecciones", "Cantidad", 2:3) %>%
+  filter(Cantidad != 0)
 
 viz5 <- ggplot(df1, aes(Elecciones, Cantidad, fill = Partido)) + 
   geom_col(position = "dodge2")

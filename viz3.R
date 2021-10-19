@@ -6,7 +6,8 @@ library(png)
 
 df <- read.csv("datos/rp.csv", na.strings = "")
 df1<- df %>%
-  gather("Legislatura","RepresentacionProporcional", 2:4)
+  gather("Legislatura","RepresentacionProporcional", 2:4) %>%
+  filter(RepresentacionProporcional != 0)
 
 img <- png::readPNG("img/logo.png")
 g_pic  <- rasterGrob(img, interpolate = TRUE)
