@@ -22,6 +22,10 @@ g_pic  <- rasterGrob(img, interpolate = TRUE)
 fig  <- ggplot(df1, aes( x = reorder(Partido, -MayoriaRelativa), MayoriaRelativa, fill=Legislatura)) + geom_col(position = "dodge2")
 fig + theme_classic() + labs(title="Distribución de la Mayoría Relativa por partidos", subtitle ="Legislaturas LXIII,LXIV y LXV", caption = "Fuente: Currícula de la Cámara de Diputados") +
   xlab("Partidos") + ylab("Cantidad de diputados") + theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) + 
-  theme(legend.position = "top") + geom_text(aes(label = MayoriaRelativa),  position = position_dodge(width = 1), vjust = -.4)+
-scale_fill_discrete(labels = c("Legislatura 2015-2018", "Legislatura 2018-2021", "Legislatura 2021-2024")) + annotation_custom(g_pic, xmin=5, xmax=Inf, ymin=5, ymax=Inf)
+  theme(legend.position = "top") + geom_text(aes(label = MayoriaRelativa),  position = position_dodge(width = 1), vjust = -.5)+ scale_y_continuous(limits=c(0, 200))+
+  annotation_custom(g_pic, xmin=5, xmax=Inf, ymin=5, ymax=Inf) + scale_fill_d3(labels = c("Legislatura 2015-2018", "Legislatura 2018-2021", "Legislatura 2021-2024"))
+
+
+
+
 
