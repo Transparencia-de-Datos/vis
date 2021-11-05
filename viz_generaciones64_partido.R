@@ -17,5 +17,5 @@ df1<- df %>%
 viz <- ggplot(df1, aes(Partido, Total, fill=Generacion)) + geom_col(position="dodge2")
 viz + theme_classic() + labs(title="Distribución generacional de los diputados por partido", subtitle ="Legislatura LXIV", caption = "Fuente: Currícula de la Cámara de Diputados") +
   theme(legend.position = "top") + geom_text(aes(label = Total),  position = position_dodge(width = 1), vjust = -.4) +
-  scale_fill_jama()
+  scale_fill_jama() + scale_y_continuous(limits=c(0, 120))
 
