@@ -15,12 +15,12 @@ df_porcentaje <- df %>%
          millenials_porcentaje, z_porcentaje)
 
 df1<- df_porcentaje %>%
-  gather("Generacion", "Porcentaje", 2:6) %>%
-  filter(Porcentaje != 0) %>%
-  mutate(Porcentaje = round(Porcentaje, 2))
+  gather("Generacion", "Proporcion", 2:6) %>%
+  filter(Proporcion != 0) %>%
+  mutate(Proporcion = round(Proporcion, 2))
 
-viz <- ggplot(df1, aes(estado, Porcentaje, fill=Generacion)) + geom_col()
-viz + theme_classic() + labs(title="Distribución generacional de los diputados por estado", subtitle ="Legislatura LXV", caption = "Fuente: Currícula de la Cámara de Diputados") +
-  theme(legend.position = "top") + geom_text(aes(label = Porcentaje),  position = position_dodge(width = 1), vjust = -.4) +
-  coord_flip() + scale_fill_lancet()
+viz <- ggplot(df1, aes(estado, Proporcion, fill=Generacion)) + geom_col()
+viz + theme_classic() + labs(title="Proporción generacional de los diputados en cada estado", subtitle ="Legislatura LXV", caption = "Fuente: Currícula de la Cámara de Diputados") +
+  theme(legend.position = "top", axis.text.x=element_text(angle = 30, vjust =.6)) + geom_text(aes(label = Proporcion),  position = position_dodge(width = 1), vjust = -.4) +
+   scale_fill_jama()
 
