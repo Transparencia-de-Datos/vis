@@ -4,6 +4,8 @@ library(tidyr)
 library(ggplot2)
 library(ggsci)
 library(forcats)
+library(png)
+library(grid)
 
 
 df <- read_excel("datos/Generaciones_2018_2021.xlsx",sheet = 1)

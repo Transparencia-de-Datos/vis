@@ -6,7 +6,7 @@ library(forcats)
 library(ggsci)
 library(png)
 library(grid)
-library(png)
+
 
 
 df <- read_excel("datos/Generaciones_2018_2021.xlsx",sheet = 3)

@@ -3,6 +3,8 @@ library(dplyr)
 library(tidyr)
 library(ggplot2)
 library(ggsci)
+library(png)
+library(grid)
 
 df <- read_excel("datos/Generaciones_2018_2021.xlsx",sheet = 6)
 df1<- df %>%
