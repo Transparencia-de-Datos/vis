@@ -17,7 +17,7 @@ df_porcentaje <- df %>%
 df1<- df_porcentaje %>%
   gather("Generacion", "Proporcion", 2:6) %>%
   filter(Proporcion != 0) %>%
-  mutate(Proporcion = round(Proporcion, 2)) %>%
+  mutate(Proporcion = round(Proporcion, 3)) %>%
   mutate(Porcentaje = Proporcion *100)
 
 viz <- ggplot(df1, aes(estado, Porcentaje, fill=Generacion)) + geom_col()

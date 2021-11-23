@@ -18,8 +18,9 @@ df_porcentaje <- df %>%
 df1<- df_porcentaje %>%
   gather("Generacion", "Proporcion", 2:6) %>%
   filter(Proporcion != 0) %>%
-  mutate(Proporcion = round(Proporcion, 2)) %>%
-  mutate(Porcentaje=Proporcion*100)
+  mutate(Proporcion = round(Proporcion, 3)) %>%
+  mutate(Porcentaje=Proporcion*100) %>%
+  arrange(desc(Porcentaje))
 
 
   
@@ -27,3 +28,7 @@ viz <- ggplot(df1, aes(estado, Porcentaje, fill=Generacion)) + geom_col()
 viz + theme_classic() + labs(title="Distribución generacional de los diputados por estados", subtitle ="Legislaturas LXIV", caption = "Fuente: Currícula de la Cámara de Diputados")+
   theme(legend.position = "top", axis.text.x=element_text(angle = 90, hjust = 1)) + geom_text(aes(label = Porcentaje),  position = "stack", size = 3, hjust = 0.5, vjust = 2) + 
   scale_fill_jama(name = "Generación", labels = c("Boomers", "X", "Millenial", "Silenciosa"))
+
+df2<- df1 %>%
+  group_by(estado) %>%
+  summarise(sum(Porcentaje))
