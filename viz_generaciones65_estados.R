@@ -3,6 +3,8 @@ library(dplyr)
 library(tidyr)
 library(ggplot2)
 library(ggsci)
+library(png)
+
 
 df <- read_excel("datos/Generaciones_2018_2021.xlsx",sheet = 5)
 df_porcentaje <- df %>%
@@ -16,7 +18,8 @@ df_porcentaje <- df %>%
 
 df1<- df_porcentaje %>%
   gather("Generacion", "Proporcion", 2:6) %>%
-  filter(Proporcion != 0) %>%
+  filter(Proporcion != 0 ) %>%
+  filter(estado != "Sin asginar") %>%
   mutate(Proporcion = round(Proporcion, 3)) %>%
   mutate(Porcentaje = Proporcion *100) %>%
   arrange(desc(Porcentaje))
@@ -25,10 +28,10 @@ viz <- ggplot(df1, aes(estado, Porcentaje, fill=Generacion)) + geom_col()
 viz + theme_classic() + labs(title="Porcentaje de los diputados en cada estado por generación", subtitle ="Legislatura LXV", caption = "Fuente: Currícula de la Cámara de Diputados") +
   theme(legend.position = "top", axis.text.x=element_text(angle =90, hjust =1))+
      geom_text(aes(label = Porcentaje), color = "white" , position = "stack", size = 2, hjust = 0.5, vjust = 1) +
-   scale_fill_jama(name = "Generación", labels = c("X", "Boomers" ,"Millenials", "Silenciosa", "Z")) + 
-  annotation_custom(g_pic, xmin=5, xmax=Inf, ymin=30, ymax=110)
+   scale_fill_jama(name = "Generación", labels = c("X", "Boomers" ,"Millenials", "Silenciosa", "Z")) 
 
 
 df2<- df1 %>%
   group_by(estado) %>%
   summarise(sum(Porcentaje))
+
