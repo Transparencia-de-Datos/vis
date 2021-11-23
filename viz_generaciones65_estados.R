@@ -23,6 +23,6 @@ df1<- df_porcentaje %>%
 viz <- ggplot(df1, aes(estado, Porcentaje, fill=Generacion)) + geom_col()
 viz + theme_classic() + labs(title="Porcentaje de los diputados en cada estado por generación", subtitle ="Legislatura LXV", caption = "Fuente: Currícula de la Cámara de Diputados") +
   theme(legend.position = "top", axis.text.x=element_text(angle =90, hjust =1))+
-     geom_text(aes(label = Porcentaje),  position = "stack", size = 2, hjust = 0.5, vjust = 1) +
+     geom_text(aes(label = Porcentaje), color = "white" , position = "stack", size = 2, hjust = 0.5, vjust = 1) +
    scale_fill_jama(name = "Generación", labels = c("Boomers", "X", "Millenial", "Silenciosa", "Z"))
 
