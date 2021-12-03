@@ -28,7 +28,7 @@ viz <- ggplot(df1, aes(estado, Porcentaje, fill=Generacion)) + geom_col()
 viz + theme_classic() + labs(title="Distribución generacional de los diputados por estados", subtitle ="Legislatura LXV (2021-2024)", caption = "Fuente: Currícula de la Cámara de Diputados") +
   theme(legend.position = "top", axis.text.x=element_text(angle =90, hjust =1))+
      geom_text(aes(label = Porcentaje), color = "white", fontface=2, position = "stack", size = 3, hjust = 0.5, vjust = 1) +
-   scale_fill_jama(name = "Generación", labels = c("X", "Boomers" ,"Millenials", "Silenciosa", "Z")) 
+   scale_fill_jama(name = "Generación", labels = c("X", "Boomers" ,"Millennials", "Silenciosa", "Z")) + scale_y_continuous(limits=c(-1, 120))
 
 
 

@@ -27,5 +27,5 @@ g_pic  <- rasterGrob(img, interpolate = TRUE)
 viz <- ggplot(df1, aes(Partido, Total, fill=Generacion)) + geom_col(position="dodge2")
 viz + theme_classic() + labs(title="Distribución generacional de los diputados por partido", subtitle ="Legislatura LXIV (2018-2021)", caption = "Fuente: Currícula de la Cámara de Diputados") +
   theme(legend.position = "top") + geom_text(aes(label = Total),  position = position_dodge(width = 1), vjust = -.4) +
-  scale_fill_jama(name = "Generación", labels = c("X", "Boomers", "Millenial", "Silenciosa")) + scale_y_continuous(limits=c(0, 120)) + annotation_custom(g_pic, xmin=5, xmax=Inf, ymin=5, ymax=Inf)
+  scale_fill_jama(name = "Generación", labels = c("X", "Boomers", "Millennials", "Silenciosa")) + scale_y_continuous(limits=c(0, 120)) + annotation_custom(g_pic, xmin=5, xmax=Inf, ymin=5, ymax=Inf)
 
